@@ -5,6 +5,6 @@ const router = express.Router();
 
 router.route("/").post(addCat).get(viewCats)
 
-router.route('/:id').edit(editCat).delete(deleteCat)
+router.route('/:id').patch(editCat).delete(deleteCat)
 
 export default router
