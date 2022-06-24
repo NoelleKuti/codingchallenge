@@ -14,22 +14,24 @@ let catSchema = new Schema(
             type: String,
             maxLength: 500,
             required: true,
-            trim: true,
+            trim: true, 
         },
         yearsOld: {
             type: Number,
-            max: 20
         },
         monthsOld: {
             type: Number,
-            max: 11
         },
         xdoor: String,
         fixed: Boolean,
         available: Boolean,
-        lastUpdated: Date,
-    });
+    },
+    {
+    timestamps: true
+    },
+);
 
-let Cat = mongoose.Schema("Cat", catSchema);
+    //catSchema.set('collection', 'code-challenge')
+let Cat = mongoose.model("Cat", catSchema);
 
 export default Cat
