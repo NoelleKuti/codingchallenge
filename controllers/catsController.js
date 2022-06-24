@@ -14,3 +14,5 @@ const deleteCat = (req, res) => {
 const viewCats = (req, res) => {
     res.send('View cats!')
 }
+
+export { addCat, editCat, deleteCat, viewCats }
