@@ -13,8 +13,7 @@ let catSchema = new Schema(
         description: {
             type: String,
             maxLength: 500,
-            required: true,
-            trim: true, 
+            required: true, 
         },
         yearsOld: {
             type: Number,

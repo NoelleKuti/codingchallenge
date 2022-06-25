@@ -6,7 +6,9 @@ import { useAppContext } from '../context/appContext'
 
 const AddCatForm = () => {
   
-	const { toggleShowForm, handleTextInput, yearsOld, monthsOld, handleAgeChange } = useAppContext();
+	const { toggleShowForm, handleTextInput, yearsOld, monthsOld, handleAgeChange, charsRemaining} = useAppContext();
+
+
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
@@ -32,7 +34,7 @@ const AddCatForm = () => {
 				  	<input className='textInput' type='text' name='description' placeholder="Add Description Of Cat" onChange={(e) => { handleTextInput(e) }} />
 					<div className=' row helperText'>
 					  <p>*required</p>
-					  <p>this many characters left...</p>
+					  <p className={charsRemaining < 0 ? "danger" : "success"}>{charsRemaining} characters left...</p>
 					</div>
 			  	</div> 
 			  	<div className='row formField'>
@@ -101,11 +103,17 @@ const FormStyles = styled.div`
 		}
 		.helperText {
 			font-size: 9px;
-			color: red;
+			color: grey;
 			width: 80%;
 			align-self: flex-start;
 			padding: 5px;
 			justify-content: space-between;
+			.success {
+				color: green;
+			}
+			.danger {
+				color: red;
+			}
 		}
 		.numberInput {
 			border: 1px solid black;

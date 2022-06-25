@@ -12,6 +12,7 @@ const reducer = (state, action) => {
                 ...state,
                 catName: '',
                 description: '',
+                charsRemaining: 500,
                 yearsOld: 0,
                 monthsOld: 0,
                 xdoor: '',
@@ -24,7 +25,8 @@ const reducer = (state, action) => {
             const e = action.payload;
             return {
                 ...state,
-                [e.target.name] : e.target.value
+                [e.target.name]: e.target.value,
+                charsRemaining: 500 - (state.description.length),
             }
         case HANDLE_AGE_CHANGE:
             const { fieldName, value } = action.payload

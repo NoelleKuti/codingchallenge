@@ -6,6 +6,7 @@ const initialState = {
     showForm: false,
     catName: '',
     description: '',
+    charsRemaining: 500,
     yearsOld: 0,
     monthsOld: 0,
     xdoor: '',
