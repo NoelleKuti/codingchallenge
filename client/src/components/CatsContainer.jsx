@@ -1,9 +1,16 @@
 import React from 'react'
+import styled from 'styled-components'
 
 const CatsContainer = () => {
   return (
-    <div>CatsContainer</div>
+      <ContainerStyles>
+          CatsContainer</ContainerStyles>
   )
 }
 
+const ContainerStyles = styled.div`
+    
+
+
+`
 export default CatsContainer

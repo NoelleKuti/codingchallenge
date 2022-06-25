@@ -1,4 +1,3 @@
-import './App.css';
 import AddCatForm from './components/AddCatForm';
 import { useAppContext } from './context/appContext';
 import styled from 'styled-components'
@@ -18,19 +17,19 @@ function App() {
 }
 
 const AppStyles = styled.div`
+    background-color: #e9ebee;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    min-height: 100vh;
+    display: flex;
+
     .showFormButton {
         width: 50%;
-        margin: 0px auto;
-        padding: 1rem;
-        background-color: var(--400);
         font-size: 2rem;
-        color: white;
-        border-radius: 20px;
-        cursor: pointer;
-        :hover {
-            background-color: var(--500);
-        }
-
+        align-self: flex-start;
+        margin-top: 3rem;
     }    
     
 `

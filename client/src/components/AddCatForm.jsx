@@ -18,15 +18,17 @@ const AddCatForm = () => {
 	return (
 		<FormStyles>
 			<form className='addCatForm column' onSubmit={(e) => { handleSubmit(e) }}>
-				<button type='button' className='closeFormButton' onClick={() => { toggleShowForm() }}>
-					X
-				</button>
-				
+				<div className='formHeaders row'>
+					<h2>Add A Cat</h2>
+					<button type='button' className='closeFormButton' onClick={() => { toggleShowForm() }}>
+						X
+					</button>
+				</div>
 				<div className='column formField'>
 				    <label htmlFor='catName'>
 						name:
 				    </label>
-				  	<input className='textInput' type='text' name='catName' placeholder="Add Cat's Name Here" onChange={(e) => { handleTextInput(e) }} />
+				  	<input className='textInput' type='text' name='catName' placeholder="Add Cat's Name" onChange={(e) => { handleTextInput(e) }} />
 				  	<div className='row helperText'>
 						<p>*required</p>
 				  	</div>
@@ -35,7 +37,7 @@ const AddCatForm = () => {
 				  	<label htmlFor='description'>
 					  	description:
 				  	</label>
-				  	<input className='textInput' type='text' name='description' placeholder="Add Description Of Cat" onChange={(e) => { handleTextInput(e) }} />
+				  	<textarea rows='8' className='textInput' name='description' placeholder="Add Description Of Cat" onChange={(e) => { handleTextInput(e) }} />
 					<div className=' row helperText'>
 					  <p>*required</p>
 					  <p className={charsRemaining < 0 ? "danger" : "success"}>{charsRemaining} characters left...</p>
@@ -43,7 +45,7 @@ const AddCatForm = () => {
 			  	</div> 
 			  	<div className='row formField'>
 					<h3>age (if known):</h3>
-					<div className='row'>
+					<div className='ageOptions row'>
 						<div className='column'>
 							<label htmlFor='years'>
 								years:
@@ -74,7 +76,7 @@ const AddCatForm = () => {
 						</div>
 					</div>
 			  	</div>
-				<button type='submit'>SUBMIT</button>
+				<button type='submit' className='submitButton'>SUBMIT</button>
 			</form> 
 
 		</FormStyles>
@@ -82,32 +84,65 @@ const AddCatForm = () => {
 }
 
 const FormStyles = styled.div`
+	margin: 0px auto;
+	width: 100%;
+
 	.addCatForm {
-		max-width: 500px;
+		width: 80%;
+		max-width: 600px;
 		margin: 4rem auto;
-		border: 1px solid black;
 		border-radius: 50px;
-		padding: 3rem;
-		position: relative;
+		background-color: white;
+	}
+
+	.formHeaders {
+		justify-content: space-between;
+		width: 90%;
+		margin: 0px auto;
+		padding: 1rem;
+		h2 {
+			margin-left: 2rem;
+			font-size: 2rem;
+		}
+	}
+
+	.closeFormButton {
+			width: 5rem;
+			height: 5rem;
+			padding: 1rem;
+			margin: 0;
+			cursor: pointer;
+			border-radius: 50%;
+			border: none;
+			background-color: var(--50);
+			color: var(--500);
+			font-size: 1.5rem;
+			:hover {
+				background-color: var(--100);
+			}
 	}
 
 	.formField {
 		width: 80%;
-		padding: 1rem;
+		padding: 1.5rem;
+		background-color: var(--50);
+		margin: 10px auto;
+
 		label, h3 {
 			width: 100%;
 			display: flex;
 			align-items: flex-start;
 			font-size: 15px;
-			padding: 5px;
+			padding: 10px;
 			font-weight: 600;
 		}
 		.textInput {
-			border: 1px solid black;
+			border: 2px solid var(--500);
 			font-size: 18px;
 			padding: .5rem;
 			border-radius: 15px;
 		}
+		
 		.helperText {
 			font-size: 13px;
 			color: grey;
@@ -130,6 +165,13 @@ const FormStyles = styled.div`
 			font-size: 20px;
 			text-align: center;
 		}
+
+		.ageOptions {
+			justify-content: space-around;
+			width: 90%;
+			margin: 0px auto;
+		}
+
 		.numInputBox {
 			border: 2px solid blue;
 			display: flex;
@@ -162,19 +204,9 @@ const FormStyles = styled.div`
 		}
 	}
 
-	.closeFormButton {
-			width: 5rem;
-			height: 5rem;
-			padding: 1rem;
-			cursor: pointer;
-			border-radius: 50%;
-			border: none;
-			background-color: var(--50);
-			color: var(--500);
-			position: absolute;
-			top: 1rem;
-			right: 1rem;
-		}
-
+	.submitButton {
+		margin: 2rem auto 2rem auto;
+	}
 `
+
 export default AddCatForm
