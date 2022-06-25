@@ -4,7 +4,8 @@ import styled from 'styled-components'
 const CatsContainer = () => {
   return (
       <ContainerStyles>
-          CatsContainer</ContainerStyles>
+          CatsContainer
+      </ContainerStyles>
   )
 }
 
