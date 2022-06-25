@@ -6,20 +6,12 @@ import { useAppContext } from '../context/appContext'
 
 const AddCatForm = () => {
   
-	const { toggleShowForm } = useAppContext();
+	const { toggleShowForm, handleTextInput, yearsOld, monthsOld, handleAgeChange } = useAppContext();
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		console.log('Submitted!');
 	}
-	
-	const handleChange = (e) => {
-		console.log(e.target.name, e.target.value);
-	}
-	
-	const [yearsOld, setYearsOld] = useState(0)
-	const [monthsOld, setMonthsOld] = useState(0)
-   
 	
 	return (
 		<FormStyles>
@@ -28,7 +20,7 @@ const AddCatForm = () => {
 				    <label htmlFor='catName'>
 						name:
 				    </label>
-				  	<input className='textInput' type='text' name='catName' placeholder="Add Cat's Name Here" onChange={(e) => { handleChange(e) }} />
+				  	<input className='textInput' type='text' name='catName' placeholder="Add Cat's Name Here" onChange={(e) => { handleTextInput(e) }} />
 				  	<div className='row helperText'>
 						<p>*required</p>
 				  	</div>
@@ -37,7 +29,7 @@ const AddCatForm = () => {
 				  	<label htmlFor='description'>
 					  	description:
 				  	</label>
-				  	<input className='textInput' type='text' name='catName' placeholder="Add Description Of Cat" onChange={(e) => { handleChange(e) }} />
+				  	<input className='textInput' type='text' name='description' placeholder="Add Description Of Cat" onChange={(e) => { handleTextInput(e) }} />
 					<div className=' row helperText'>
 					  <p>*required</p>
 					  <p>this many characters left...</p>
@@ -51,11 +43,11 @@ const AddCatForm = () => {
 								years:
 							</label>
 							<div className='numInputBox'>
-								<button type='button' className='buttonDown' onClick={() => { setYearsOld(yearsOld - 1) }}>
+								<button type='button' className='buttonDown' onClick={() => { handleAgeChange({ fieldName: 'yearsOld', value: yearsOld - 1}) }} disabled={yearsOld === 0}>
 									-
 								</button>
 								<input type='text' className='numberInput' value={yearsOld} readOnly />
-								<button type='button' className='buttonUp' onClick={() => { setYearsOld(yearsOld + 1) }}>
+								<button type='button' className='buttonUp' onClick={() => { handleAgeChange({ fieldName: 'yearsOld', value: yearsOld + 1}) }} disabled={yearsOld === 20}>
 									+
 								</button>
 							</div>
@@ -65,11 +57,11 @@ const AddCatForm = () => {
 								months:
 							</label>
 							<div className='numInputBox'>
-								<button type='button' className='buttonDown' onClick={() => { setMonthsOld(monthsOld - 1) }}>
+								<button type='button' className='buttonDown' onClick={() => { handleAgeChange({ fieldName: 'monthsOld', value: monthsOld - 1}) }} disabled={monthsOld === 0}>
 									-
 								</button>
 								<input type='text' className='numberInput' value={monthsOld} readOnly />  
-								<button type='button' className='buttonUp' onClick={() => { setMonthsOld(monthsOld + 1) }}>
+								<button type='button' className='buttonUp' onClick={() => { handleAgeChange({ fieldName: 'monthsOld', value: monthsOld + 1}) }} disabled={monthsOld === 11}>
 									+
 								</button>
 							</div>

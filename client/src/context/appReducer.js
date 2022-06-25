@@ -1,5 +1,4 @@
-import { TOGGLE_SHOW_FORM, CLEAR_FORM } from "./appActions";
-import { initialState } from "./appContext";
+import { TOGGLE_SHOW_FORM, CLEAR_FORM, HANDLE_TEXT_INPUT, HANDLE_AGE_CHANGE } from "./appActions";
 
 const reducer = (state, action) => {
     switch (action.type) {
@@ -9,8 +8,8 @@ const reducer = (state, action) => {
                 showForm: (!state.showForm)
             }
         case CLEAR_FORM:
-            const initialState = {
-                showForm: false,
+            return {
+                ...state,
                 catName: '',
                 description: '',
                 yearsOld: 0,
@@ -20,7 +19,19 @@ const reducer = (state, action) => {
                 available: true,
                 showError: false,
                 errorText: '',
-            }     
+            }
+        case HANDLE_TEXT_INPUT:
+            const e = action.payload;
+            return {
+                ...state,
+                [e.target.name] : e.target.value
+            }
+        case HANDLE_AGE_CHANGE:
+            const { fieldName, value } = action.payload
+            return {
+                ...state,
+                [fieldName]: value
+            }
     }
 }
 

@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useReducer } from 'react'
 import reducer from './appReducer';
-import { TOGGLE_SHOW_FORM, CLEAR_FORM } from './appActions';
+import { TOGGLE_SHOW_FORM, CLEAR_FORM, HANDLE_TEXT_INPUT, HANDLE_AGE_CHANGE } from './appActions';
 
 const initialState = {
     showForm: false,
@@ -25,16 +25,20 @@ const AppProvider = ({ children }) => {
     }
     
     const clearForm = () => {
-        dispatch({ type:CLEAR_FORM})
+        dispatch({ type: CLEAR_FORM})
     }
 
-    const handleAgeChange = (unit) => {
-        if (unit === 'years' && 0 >= unit >= 20) {
-            dispatch({
-                type: CHANGE_YEARS_OLD,
-                payload: newValue
-            })
-        }
+    const handleTextInput = (e) => {
+        dispatch({
+            type: HANDLE_TEXT_INPUT,
+            payload: e
+        })
+    }
+    const handleAgeChange = (data) => {
+        dispatch({
+            type: HANDLE_AGE_CHANGE,
+            payload: data
+        })
     }
     return (
         <AppContext.Provider
@@ -42,6 +46,8 @@ const AppProvider = ({ children }) => {
                 ...state,
                 toggleShowForm,
                 clearForm,
+                handleTextInput,
+                handleAgeChange
             }}>
             {children}
         </AppContext.Provider>
