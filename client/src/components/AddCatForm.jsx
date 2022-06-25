@@ -130,10 +130,18 @@ const FormStyles = styled.div`
 			.buttonUp {
 				background-color: green;
 				border-radius: 0 20px 20px 0;
+				:disabled {
+					background-color: grey;
+					color: white;
+				}
 			}
 			.buttonDown {
 				background-color: red;
 				border-radius: 20px 0 0 20px;
+				:disabled {
+					background-color: grey;
+					color: white;
+				}
 			}
 		}
 	}
