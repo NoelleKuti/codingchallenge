@@ -1,0 +1,2 @@
+export const TOGGLE_SHOW_FORM = 'TOGGLE_SHOW_FORM'
+export const CLEAR_FORM = 'CLEAR_FORM'

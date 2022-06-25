@@ -1,12 +1,19 @@
 import './App.css';
 import AddCatForm from './components/AddCatForm';
+import { useAppContext } from './context/appContext';
 
 function App() {
-  return (
-    <div className="App">
-      <AddCatForm />
-    </div>
-  );
+    const { showForm, toggleShowForm } = useAppContext();  
+    return (
+        <div className='App'>
+            {showForm
+                ? <AddCatForm />
+                : <button type='button' onClick={() => {toggleShowForm()}}>
+                    Show Form
+                </button>
+            }
+        </div>
+    );
 }
 
 export default App;
