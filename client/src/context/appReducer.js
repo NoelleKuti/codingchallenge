@@ -23,10 +23,11 @@ const reducer = (state, action) => {
             }
         case HANDLE_TEXT_INPUT:
             const e = action.payload;
+            console.log(e.target.value, e.target.value.length)
             return {
                 ...state,
+                charsRemaining: 500 - e.target.value.length,
                 [e.target.name]: e.target.value,
-                charsRemaining: 500 - (state.description.length),
             }
         case HANDLE_AGE_CHANGE:
             const { fieldName, value } = action.payload

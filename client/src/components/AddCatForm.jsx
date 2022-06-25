@@ -17,7 +17,11 @@ const AddCatForm = () => {
 	
 	return (
 		<FormStyles>
-			<form className='addCatForm column' onSubmit={(e) => {handleSubmit(e)}}>
+			<form className='addCatForm column' onSubmit={(e) => { handleSubmit(e) }}>
+				<button type='button' className='closeFormButton' onClick={() => { toggleShowForm() }}>
+					X
+				</button>
+				
 				<div className='column formField'>
 				    <label htmlFor='catName'>
 						name:
@@ -70,7 +74,7 @@ const AddCatForm = () => {
 						</div>
 					</div>
 			  	</div>
-			  	<button type='button' onClick={() => {toggleShowForm()}}>CLOSE FORM</button>
+				<button type='submit'>SUBMIT</button>
 			</form> 
 
 		</FormStyles>
@@ -80,8 +84,11 @@ const AddCatForm = () => {
 const FormStyles = styled.div`
 	.addCatForm {
 		max-width: 500px;
-		margin: 0px auto;
+		margin: 4rem auto;
 		border: 1px solid black;
+		border-radius: 50px;
+		padding: 3rem;
+		position: relative;
 	}
 
 	.formField {
@@ -93,7 +100,7 @@ const FormStyles = styled.div`
 			align-items: flex-start;
 			font-size: 15px;
 			padding: 5px;
-			font-weight: 500;
+			font-weight: 600;
 		}
 		.textInput {
 			border: 1px solid black;
@@ -102,12 +109,13 @@ const FormStyles = styled.div`
 			border-radius: 15px;
 		}
 		.helperText {
-			font-size: 9px;
+			font-size: 13px;
 			color: grey;
 			width: 80%;
 			align-self: flex-start;
-			padding: 5px;
+			padding: 0px;
 			justify-content: space-between;
+			font-weight: 500;
 			.success {
 				color: green;
 			}
@@ -154,7 +162,19 @@ const FormStyles = styled.div`
 		}
 	}
 
-
+	.closeFormButton {
+			width: 5rem;
+			height: 5rem;
+			padding: 1rem;
+			cursor: pointer;
+			border-radius: 50%;
+			border: none;
+			background-color: var(--50);
+			color: var(--500);
+			position: absolute;
+			top: 1rem;
+			right: 1rem;
+		}
 
 `
 export default AddCatForm

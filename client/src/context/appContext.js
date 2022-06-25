@@ -28,7 +28,6 @@ const AppProvider = ({ children }) => {
     const clearForm = () => {
         dispatch({ type: CLEAR_FORM})
     }
-
     const handleTextInput = (e) => {
         dispatch({
             type: HANDLE_TEXT_INPUT,
