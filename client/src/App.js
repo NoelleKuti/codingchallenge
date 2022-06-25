@@ -9,7 +9,7 @@ function App() {
             {showForm
                 ? <AddCatForm />
                 : <button type='button' onClick={() => {toggleShowForm()}}>
-                    Show Form
+                    SHOW FORM
                 </button>
             }
         </div>

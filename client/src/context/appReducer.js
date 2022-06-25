@@ -18,6 +18,8 @@ const reducer = (state, action) => {
                 xdoor: '',
                 fixed: false,
                 available: true,
+                showError: false,
+                errorText: '',
             }     
     }
 }

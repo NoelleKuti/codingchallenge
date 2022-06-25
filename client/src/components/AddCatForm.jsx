@@ -1,10 +1,13 @@
 import React, {useState} from 'react'
 import styled from 'styled-components'
+import { useAppContext } from '../context/appContext'
 
 
 
 const AddCatForm = () => {
   
+	const { toggleShowForm } = useAppContext();
+
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		console.log('Submitted!');
@@ -42,33 +45,38 @@ const AddCatForm = () => {
 			  	</div> 
 			  	<div className='row formField'>
 					<h3>age (if known):</h3>
-					<label htmlFor='years'>
-						years:
-					</label>
-					<div className='numInputBox'>
-						<button type='button' className='buttonDown' onClick={() => { setYearsOld(yearsOld - 1) }}>
-							-
-						</button>
-						<input type='text' className='numberInput' value={yearsOld} readOnly />
-						<button type='button' className='buttonUp' onClick={() => { setYearsOld(yearsOld + 1) }}>
-							+
-						</button>
-					</div>
-				  
-					<label htmlFor='months'>
-					  	months:
-				  	</label>
-					<div className='numInputBox'>
-						<button type='button' className='buttonDown' onClick={() => { setMonthsOld(monthsOld - 1) }}>
-							-
-						</button>
-						<input type='text' className='numberInput' value={monthsOld} readOnly />  
-						<button type='button' className='buttonUp' onClick={() => { setMonthsOld(monthsOld + 1) }}>
-							+
-						</button>
+					<div className='row'>
+						<div className='column'>
+							<label htmlFor='years'>
+								years:
+							</label>
+							<div className='numInputBox'>
+								<button type='button' className='buttonDown' onClick={() => { setYearsOld(yearsOld - 1) }}>
+									-
+								</button>
+								<input type='text' className='numberInput' value={yearsOld} readOnly />
+								<button type='button' className='buttonUp' onClick={() => { setYearsOld(yearsOld + 1) }}>
+									+
+								</button>
+							</div>
+						</div>
+						<div className='column'>
+							<label htmlFor='months'>
+								months:
+							</label>
+							<div className='numInputBox'>
+								<button type='button' className='buttonDown' onClick={() => { setMonthsOld(monthsOld - 1) }}>
+									-
+								</button>
+								<input type='text' className='numberInput' value={monthsOld} readOnly />  
+								<button type='button' className='buttonUp' onClick={() => { setMonthsOld(monthsOld + 1) }}>
+									+
+								</button>
+							</div>
+						</div>
 					</div>
 			  	</div>
-			  
+			  	<button type='button' onClick={() => {toggleShowForm()}}>CLOSE FORM</button>
 			</form> 
 
 		</FormStyles>
