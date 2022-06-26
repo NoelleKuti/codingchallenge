@@ -36,8 +36,11 @@ const reducer = (state, action) => {
                 [fieldName]: value
             }
         case VIEW_CATS:
-            const data = action.payload;
-            console.log(data);
+            const data = action.payload.data;
+            return {
+                ...state,
+                catsData: data
+            }
     }
 }
 

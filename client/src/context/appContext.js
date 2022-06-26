@@ -15,6 +15,7 @@ const initialState = {
     available: true,
     showError: false,
     errorText: '',
+    catsData: [],
 }
 
 const AppContext = createContext(initialState);

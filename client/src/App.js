@@ -9,12 +9,12 @@ function App() {
         <AppStyles className='App'>
             {showForm
                 ? <AddCatForm />
-                : <>
+                : <div className='column'>
                     <button className='showFormButton' type='button' onClick={() => {toggleShowForm()}}>
                         add a cat
                     </button>
                     <CatsContainer />
-                  </>
+                  </div>
             }
         </AppStyles>
     );
