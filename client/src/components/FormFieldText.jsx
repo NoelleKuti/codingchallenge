@@ -2,16 +2,17 @@ import React from 'react'
 import styled from 'styled-components'
 import { useAppContext } from '../context/appContext'
 
-const FormFieldText = ({catName, description}) => {
-    const { handleTextInput, charsRemaining } = useAppContext();
-
+const FormFieldText = () => {
+    const { handleTextInput, charsRemaining, form } = useAppContext();
+    const { catName, description } = form;
+    
     return (
       <TextFieldStyles>
         <div className='column formField'>
             <label htmlFor='catName'>
                 name:
             </label>
-                <input className='textInput' type='text' name='catName' placeholder="Add Cat's Name" onChange={(e) => { handleTextInput(e) }} defaultValue={catName !== undefined && catName} />
+                <input className='textInput' type='text' name='catName' placeholder="Add Cat's Name" onChange={(e) => { handleTextInput(e) }} defaultValue={catName && catName} />
             <div className='row helperText'>
                 <p>*required</p>
             </div>

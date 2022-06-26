@@ -1,4 +1,5 @@
 import { TOGGLE_ADD_FORM, TOGGLE_EDIT_FORM, CLEAR_FORM, HANDLE_TEXT_INPUT, HANDLE_AGE_CHANGE, VIEW_CATS, CHOOSE_CAT_TO_EDIT } from "./appActions";
+import { initialState } from "./appContext";
 
 const reducer = (state, action) => {
     switch (action.type) {
@@ -8,9 +9,13 @@ const reducer = (state, action) => {
                 showAddForm: (!state.showAddForm)
             }
         case TOGGLE_EDIT_FORM:
-            return {
-                ...state,
-                showEditForm: (!state.showEditForm)
+            if (state.showEditForm === true) {
+                return { ...initialState, showEditForm: (!state.showEditForm)}
+            } else {
+                return {
+                    ...state,
+                    showEditForm: (!state.showEditForm)
+                }
             }
         case CLEAR_FORM:
             return {

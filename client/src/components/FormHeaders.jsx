@@ -3,13 +3,12 @@ import styled from 'styled-components'
 import { useAppContext } from '../context/appContext'
 
 const FormHeaders = ({formType}) => {
-    const { toggleShowForm, showAddForm, showEditForm, catToEdit } = useAppContext();
+    const { toggleShowForm, showAddForm, showEditForm, catToEdit, form } = useAppContext();
+
     return (
         <HeaderStyles>
         <div className='formHeaders row'>
-                {catToEdit !== undefined
-                ? <h2>Edit {catToEdit.catName}</h2>
-                : <h2>Add A Cat</h2>}
+                <h2>{formType}</h2>
             <button type='button' className='closeFormButton' onClick={() => { toggleShowForm(formType) }}>
                 X
             </button>

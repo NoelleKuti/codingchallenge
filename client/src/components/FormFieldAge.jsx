@@ -3,7 +3,8 @@ import React from 'react'
 import { useAppContext } from '../context/appContext'
 
 const FormFieldAge = () => {
-    const { handleAgeChange, yearsOld, monthsOld } = useAppContext();
+    const { form, handleAgeChange } = useAppContext();
+    const { yearsOld, monthsOld } = form;
 
     return (
       <AgeFieldStyles>

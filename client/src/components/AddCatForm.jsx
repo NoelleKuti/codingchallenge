@@ -27,7 +27,7 @@ const AddCatForm = () => {
 	return (
 		<FormStyles>
 			<form className='addCatForm column' onSubmit={(e) => { handleSubmit(e) }}>
-				<FormHeaders />
+				<FormHeaders formType='add'/>
 				<FormFieldText />
 			  	<FormFieldAge />
                 <FormFieldToggles />

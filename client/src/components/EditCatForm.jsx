@@ -25,7 +25,7 @@ const EditCatForm = () => {
 	return (
 		<FormStyles>
 			<form className='addCatForm column' onSubmit={(e) => { handleSubmit(e) }}>
-                <FormHeaders catToEdit={catName} />
+                <FormHeaders formType='edit' />
                 <FormFieldText catName={catName} description={description} />
                 <FormFieldAge yearsOld={yearsOld} monthsOld={monthsOld} />
                 <FormFieldToggles xdoor={xdoor} fixed={fixed} available={available} />
