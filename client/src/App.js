@@ -1,6 +1,7 @@
 import AddCatForm from './components/AddCatForm';
 import { useAppContext } from './context/appContext';
 import styled from 'styled-components'
+import CatsContainer from './components/CatsContainer';
 
 function App() {
     const { showForm, toggleShowForm } = useAppContext();  
@@ -8,9 +9,12 @@ function App() {
         <AppStyles className='App'>
             {showForm
                 ? <AddCatForm />
-                : <button className='showFormButton' type='button' onClick={() => {toggleShowForm()}}>
-                    add a cat
-                </button>
+                : <>
+                    <button className='showFormButton' type='button' onClick={() => {toggleShowForm()}}>
+                        add a cat
+                    </button>
+                    <CatsContainer />
+                  </>
             }
         </AppStyles>
     );

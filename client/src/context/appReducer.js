@@ -1,4 +1,4 @@
-import { TOGGLE_SHOW_FORM, CLEAR_FORM, HANDLE_TEXT_INPUT, HANDLE_AGE_CHANGE } from "./appActions";
+import { TOGGLE_SHOW_FORM, CLEAR_FORM, HANDLE_TEXT_INPUT, HANDLE_AGE_CHANGE, VIEW_CATS } from "./appActions";
 
 const reducer = (state, action) => {
     switch (action.type) {
@@ -35,6 +35,9 @@ const reducer = (state, action) => {
                 ...state,
                 [fieldName]: value
             }
+        case VIEW_CATS:
+            const data = action.payload;
+            console.log(data);
     }
 }
 

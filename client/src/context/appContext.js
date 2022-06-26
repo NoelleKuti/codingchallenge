@@ -1,6 +1,7 @@
 import React, { createContext, useContext, useReducer } from 'react'
 import reducer from './appReducer';
-import { TOGGLE_SHOW_FORM, CLEAR_FORM, HANDLE_TEXT_INPUT, HANDLE_AGE_CHANGE } from './appActions';
+import { TOGGLE_SHOW_FORM, CLEAR_FORM, HANDLE_TEXT_INPUT, HANDLE_AGE_CHANGE, VIEW_CATS } from './appActions';
+import axios from 'axios'
 
 const initialState = {
     showForm: false,
@@ -40,6 +41,15 @@ const AppProvider = ({ children }) => {
             payload: data
         })
     }
+    const fetchCats = () => {
+        axios.get('http://localhost:5000/api/v1/cats', {mode: 'cors', 'Cache-Control': 'no-cache'})
+            .then((response) => {
+                dispatch({
+                    type: VIEW_CATS,
+                    payload: response,
+                })
+            })
+    }
     return (
         <AppContext.Provider
             value={{
@@ -47,7 +57,8 @@ const AppProvider = ({ children }) => {
                 toggleShowForm,
                 clearForm,
                 handleTextInput,
-                handleAgeChange
+                handleAgeChange,
+                fetchCats
             }}>
             {children}
         </AppContext.Provider>

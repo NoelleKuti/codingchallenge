@@ -14,8 +14,9 @@ const deleteCat = (req, res) => {
     res.send('Delete a cat!');
 }
 
-const viewCats = (req, res) => {
-    res.send('View cats!')
+const viewCats = async (req, res) => {
+    const cats = await Cat.find({});
+    res.send(cats);
 }
 
 export { addCat, editCat, deleteCat, viewCats }

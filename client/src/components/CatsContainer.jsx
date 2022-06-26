@@ -1,8 +1,17 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import styled from 'styled-components'
+import { useAppContext } from '../context/appContext'
 
 const CatsContainer = () => {
-  return (
+    const { fetchCats } = useAppContext();
+    
+    useEffect(() => {
+        fetchCats();
+    }, []);
+    
+    
+    
+        return (
       <ContainerStyles>
           CatsContainer
       </ContainerStyles>
