@@ -3,8 +3,8 @@ import styled from 'styled-components'
 import { useAppContext } from '../context/appContext'
 
 const FormFieldToggles = () => {
-    const { xdoor, fixed, available, handleTextInput } = useAppContext();
-    
+    const { form, handleTextInput } = useAppContext();
+    const { xdoor, available, fixed } = form;
     return (
       <FormToggleStyles>
             <div className='formField column'>

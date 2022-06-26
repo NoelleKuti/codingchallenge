@@ -6,9 +6,10 @@ import { MdDeleteOutline, MdOutlineModeEdit } from 'react-icons/md'
 
 const CatCard = (data) => {
     const { objectId, catData } = data;
+    console.log(catData, objectId)
     const { catName, description, yearsOld, monthsOld, xdoor, fixed, available, createdAt, updatedAt } = catData;
  
-    const { deleteCat } = useAppContext();
+    const { deleteCat, chooseCatToEdit } = useAppContext();
     const timeStamps = {
         created: new Date(createdAt).
             toLocaleString("en-US", {
@@ -31,7 +32,9 @@ const CatCard = (data) => {
                         <MdOutlineModeEdit
                         as='button'
                         className='button'
-                        onClick={() => { console.log('edit') }}/>
+                            onClick={() => {
+                                chooseCatToEdit(objectId, catData);
+                            }} />
                            
                         <MdDeleteOutline
                         as='button' className='button' onClick={() => window.confirm(`You are about to delete ${catName}. Are you sure?`) && deleteCat(objectId)}/>

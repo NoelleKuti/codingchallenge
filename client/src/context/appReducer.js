@@ -1,11 +1,16 @@
-import { TOGGLE_SHOW_FORM, CLEAR_FORM, HANDLE_TEXT_INPUT, HANDLE_AGE_CHANGE, VIEW_CATS } from "./appActions";
+import { TOGGLE_ADD_FORM, TOGGLE_EDIT_FORM, CLEAR_FORM, HANDLE_TEXT_INPUT, HANDLE_AGE_CHANGE, VIEW_CATS, CHOOSE_CAT_TO_EDIT } from "./appActions";
 
 const reducer = (state, action) => {
     switch (action.type) {
-        case TOGGLE_SHOW_FORM:
+        case TOGGLE_ADD_FORM:
             return {
                 ...state,
-                showForm: (!state.showForm)
+                showAddForm: (!state.showAddForm)
+            }
+        case TOGGLE_EDIT_FORM:
+            return {
+                ...state,
+                showEditForm: (!state.showEditForm)
             }
         case CLEAR_FORM:
             return {
@@ -26,19 +31,28 @@ const reducer = (state, action) => {
             if (e.target.name === 'description') {
                 return {
                     ...state,
-                    charsRemaining: 500 - e.target.value.length,
-                    [e.target.name]: e.target.value,
+                    form: {
+                        ...state.form,
+                        charsRemaining: 500 - e.target.value.length,
+                        [e.target.name]: e.target.value,
+                    }
                 }
             } else if (e.target.name === 'fixed' || e.target.name === 'available') {
                 const newBoolean = (e.target.value === 'true');
                 return {
                     ...state,
-                    [e.target.name]: newBoolean,
+                    form: {
+                        ...state.form,
+                        [e.target.name]: newBoolean,
+                    } 
                 }
             } else {
                     return {
                         ...state,
-                        [e.target.name]: e.target.value
+                        form: {
+                            ...state.form,
+                            [e.target.name]: e.target.value
+                        }
                     }
                 }
             
@@ -46,13 +60,33 @@ const reducer = (state, action) => {
             const { fieldName, value } = action.payload
             return {
                 ...state,
-                [fieldName]: value
+                form: {
+                    ...state.form,
+                    [fieldName]: value
+                }
             }
         case VIEW_CATS:
             const data = action.payload.data;
             return {
                 ...state,
                 catsData: data
+            }
+        case CHOOSE_CAT_TO_EDIT:
+            const {catName, description, yearsOld, monthsOld, fixed, available, xdoor} = action.payload
+            
+            return {
+                ...state,
+                form: {
+                    catName: catName,
+                    description: description,
+                    yearsOld: yearsOld,
+                    monthsOld: monthsOld,
+                    fixed: fixed,
+                    available: available,
+                    xdoor: xdoor,
+                    charsRemaining: (500 - description.length)
+                },
+                catToEdit: action.payload
             }
     }
 }

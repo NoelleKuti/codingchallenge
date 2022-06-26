@@ -2,13 +2,15 @@ import React from 'react'
 import styled from 'styled-components'
 import { useAppContext } from '../context/appContext'
 
-const FormHeaders = () => {
-    const { toggleShowForm } = useAppContext();
+const FormHeaders = ({formType}) => {
+    const { toggleShowForm, showAddForm, showEditForm, catToEdit } = useAppContext();
     return (
         <HeaderStyles>
         <div className='formHeaders row'>
-            <h2>Add A Cat</h2>
-            <button type='button' className='closeFormButton' onClick={() => { toggleShowForm() }}>
+                {catToEdit !== undefined
+                ? <h2>Edit {catToEdit.catName}</h2>
+                : <h2>Add A Cat</h2>}
+            <button type='button' className='closeFormButton' onClick={() => { toggleShowForm(formType) }}>
                 X
             </button>
         </div>

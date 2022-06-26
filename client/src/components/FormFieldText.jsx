@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { useAppContext } from '../context/appContext'
 
-const FormFieldText = () => {
+const FormFieldText = ({catName, description}) => {
     const { handleTextInput, charsRemaining } = useAppContext();
 
     return (
@@ -11,7 +11,7 @@ const FormFieldText = () => {
             <label htmlFor='catName'>
                 name:
             </label>
-            <input className='textInput' type='text' name='catName' placeholder="Add Cat's Name" onChange={(e) => { handleTextInput(e) }} />
+                <input className='textInput' type='text' name='catName' placeholder="Add Cat's Name" onChange={(e) => { handleTextInput(e) }} defaultValue={catName !== undefined && catName} />
             <div className='row helperText'>
                 <p>*required</p>
             </div>
@@ -20,7 +20,7 @@ const FormFieldText = () => {
             <label htmlFor='description'>
                 description (500 characters or less...):
             </label>
-            <textarea rows='8' className='textInput' name='description' placeholder="Add Description Of Cat" onChange={(e) => { handleTextInput(e) }} />
+                <textarea rows='8' className='textInput' name='description' placeholder="Add Description Of Cat" onChange={(e) => { handleTextInput(e) }} defaultValue={description !== undefined && description} />
             <div className=' row helperText'>
                 <p>*required</p>
                 <p className={charsRemaining < 0 ? "danger" : "success"}>{charsRemaining} characters left...</p>

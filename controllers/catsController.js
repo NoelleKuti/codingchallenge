@@ -6,8 +6,9 @@ const addCat = async (req, res) => {
     await res.send('cat added')
 }
 
-const editCat = (req, res) => {
-    res.send('Edit a cat!');
+const editCat = async (req, res) => {
+    const editedCat = await Cat.findByIdAndUpdate(req.params.id, req.body)
+    res.send(editedCat);
 }
 
 const deleteCat = async (req, res) => {

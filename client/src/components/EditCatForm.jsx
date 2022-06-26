@@ -6,31 +6,29 @@ import FormFieldText from './FormFieldText'
 import FormFieldAge from './FormFieldAge'
 import FormFieldToggles from './FormFieldToggles'
 
+const EditCatForm = () => {
 
-const AddCatForm = () => {
-    const { catName, description, monthsOld, yearsOld, xdoor, fixed, available, addCat } = useAppContext();
+    const { catToEdit, editCat, form } = useAppContext();
+    const { _id, catName, description, monthsOld, yearsOld, xdoor, fixed, available } = catToEdit;
+
 
 	const handleSubmit = (e) => {
-		e.preventDefault();
+        e.preventDefault();
+       
         const formData = {
-            catName: catName,
-            description: description,
-            monthsOld: monthsOld,
-            yearsOld: yearsOld,
-            xdoor: xdoor,
-            fixed: fixed,
-            available: available,
+            ...form
         }
-        addCat(formData);
+
+        editCat(_id, formData);
 	}
 	
 	return (
 		<FormStyles>
 			<form className='addCatForm column' onSubmit={(e) => { handleSubmit(e) }}>
-				<FormHeaders />
-				<FormFieldText />
-			  	<FormFieldAge />
-                <FormFieldToggles />
+                <FormHeaders catToEdit={catName} />
+                <FormFieldText catName={catName} description={description} />
+                <FormFieldAge yearsOld={yearsOld} monthsOld={monthsOld} />
+                <FormFieldToggles xdoor={xdoor} fixed={fixed} available={available} />
 				<button type='submit' className='submitButton'>SUBMIT</button>
 			</form> 
 
@@ -75,4 +73,4 @@ const FormStyles = styled.div`
 	}
 `
 
-export default AddCatForm
+export default EditCatForm

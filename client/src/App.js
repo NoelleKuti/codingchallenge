@@ -1,21 +1,25 @@
 import AddCatForm from './components/AddCatForm';
+import EditCatForm from './components/EditCatForm';
 import { useAppContext } from './context/appContext';
 import styled from 'styled-components'
 import CatsContainer from './components/CatsContainer';
 
 function App() {
-    const { showForm, toggleShowForm } = useAppContext();  
+    const { showAddForm, showEditForm, toggleShowForm, catToEdit } = useAppContext();  
     return (
         <AppStyles className='App'>
-            {showForm
-                ? <AddCatForm />
+            {showAddForm && <AddCatForm/>}
+            {showEditForm && <EditCatForm catToEdit={catToEdit} />}
+            {showEditForm || showAddForm
+                ? <></>
                 : <div className='column container'>
-                    <button className='showFormButton' type='button' onClick={() => {toggleShowForm()}}>
+                    <button className='showFormButton' type='button' onClick={() => {toggleShowForm('add')}}>
                         add a cat
                     </button>
                     <CatsContainer />
                   </div>
             }
+           
         </AppStyles>
     );
 }

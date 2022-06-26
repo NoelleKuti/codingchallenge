@@ -14,8 +14,8 @@ import catsRoutes from './routes/catsRoutes.js'
 //db
 import connectDB from "./db/connect.js";
 
-app.use(express.json());
 app.use(cors());
+app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get('/', (req, res) => {

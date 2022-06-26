@@ -1,21 +1,25 @@
 import React, { createContext, useContext, useReducer } from 'react'
 import reducer from './appReducer';
-import { TOGGLE_SHOW_FORM, CLEAR_FORM, HANDLE_TEXT_INPUT, HANDLE_AGE_CHANGE, VIEW_CATS } from './appActions';
+import { TOGGLE_ADD_FORM, TOGGLE_EDIT_FORM, CLEAR_FORM, HANDLE_TEXT_INPUT, HANDLE_AGE_CHANGE, VIEW_CATS, CHOOSE_CAT_TO_EDIT } from './appActions';
 import axios from 'axios'
 
 const initialState = {
-    showForm: false,
-    catName: '',
-    description: '',
-    charsRemaining: 500,
-    yearsOld: 0,
-    monthsOld: 0,
-    xdoor: 'Indoor/Outdoor',
-    fixed: false,
-    available: true,
+    showAddForm: false,
+    showEditForm: false,
+    form: {
+        catName: '',
+        description: '',
+        charsRemaining: 500,
+        yearsOld: 0,
+        monthsOld: 0,
+        xdoor: 'Indoor/Outdoor',
+        fixed: false,
+        available: true,
+    },
     showError: false,
     errorText: '',
     catsData: [],
+    catToEdit: {}
 }
 
 const AppContext = createContext(initialState);
@@ -23,8 +27,12 @@ const AppContext = createContext(initialState);
 const AppProvider = ({ children }) => {
     const [state, dispatch] = useReducer(reducer, initialState);
 
-    const toggleShowForm = () => {
-        dispatch({ type: TOGGLE_SHOW_FORM });
+    const toggleShowForm = (formType) => {
+        if (formType === 'add') {
+            dispatch({ type: TOGGLE_ADD_FORM });
+        } else if (formType === 'edit') {
+            dispatch({ type: TOGGLE_EDIT_FORM})
+        }
     }
     
     const clearForm = () => {
@@ -42,6 +50,7 @@ const AppProvider = ({ children }) => {
             payload: data
         })
     }
+
     const fetchCats = () => {
         axios.get('http://localhost:5000/api/v1/cats', {mode: 'cors', 'Cache-Control': 'no-cache'})
             .then((response) => {
@@ -51,9 +60,35 @@ const AppProvider = ({ children }) => {
                 })
             })
     }
+
+    const addCat = (formData) => {
+        axios.post('http://localhost:5000/api/v1/cats', {...formData})
+            .then((response) => {
+                console.log(response.data);
+            })
+            .then(() => {
+                dispatch({type: TOGGLE_ADD_FORM})
+            })
+    }
+
     const deleteCat = (objectId) => {
         axios.delete('http://localhost:5000/api/v1/cats/' + objectId, {mode: 'cors', 'Cache-Control': 'no-cache'})
             .then(() => {
+                fetchCats();
+            })
+    }
+
+    const chooseCatToEdit = (objectId, data) => {
+        toggleShowForm('edit');
+        dispatch({ type: CHOOSE_CAT_TO_EDIT, payload: data })
+    }
+
+    const editCat = (objectId, data) => {
+        console.log(objectId);
+        axios.patch('http://localhost:5000/api/v1/cats/' + objectId, data)
+            .then((response) => {
+                dispatch({type: TOGGLE_EDIT_FORM})
+                console.log(response.data);
                 fetchCats();
             })
     }
@@ -67,6 +102,9 @@ const AppProvider = ({ children }) => {
                 handleAgeChange,
                 fetchCats,
                 deleteCat,
+                addCat,
+                editCat,
+                chooseCatToEdit
             }}>
             {children}
         </AppContext.Provider>
