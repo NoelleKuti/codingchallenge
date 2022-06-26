@@ -12,8 +12,8 @@ let catSchema = new Schema(
         },
         description: {
             type: String,
-            maxLength: 500,
-            required: true, 
+            maxLength: [500, 'Description character limit exceeded. Please shorten to 500 or less.'],
+            required: [true, 'Please describe cat for potential adopters.'],
         },
         yearsOld: {
             type: Number,
@@ -21,9 +21,18 @@ let catSchema = new Schema(
         monthsOld: {
             type: Number,
         },
-        xdoor: String,
-        fixed: Boolean,
-        available: Boolean,
+        xdoor: {
+            type: String,
+            required: [true, 'Please provide Indoor/Outdoor status of cat.']
+        },
+        fixed: {
+            type: Boolean,
+            required: [true, 'Please add fixed/neutered status of cat.'],
+        },
+        available: {
+            type: Boolean,
+            required: [true, "Please indicate cat's availability status."]
+        },
     },
     {
     timestamps: true
