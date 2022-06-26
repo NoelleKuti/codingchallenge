@@ -23,12 +23,25 @@ const reducer = (state, action) => {
             }
         case HANDLE_TEXT_INPUT:
             const e = action.payload;
-            console.log(e.target.value, e.target.value.length)
-            return {
-                ...state,
-                charsRemaining: 500 - e.target.value.length,
-                [e.target.name]: e.target.value,
-            }
+            if (e.target.name === 'description') {
+                return {
+                    ...state,
+                    charsRemaining: 500 - e.target.value.length,
+                    [e.target.name]: e.target.value,
+                }
+            } else if (e.target.name === 'fixed' || e.target.name === 'available') {
+                const newBoolean = (e.target.value === 'true');
+                return {
+                    ...state,
+                    [e.target.name]: newBoolean,
+                }
+            } else {
+                    return {
+                        ...state,
+                        [e.target.name]: e.target.value
+                    }
+                }
+            
         case HANDLE_AGE_CHANGE:
             const { fieldName, value } = action.payload
             return {

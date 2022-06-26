@@ -11,7 +11,7 @@ const FormFieldAge = () => {
             <h3>age (if known):</h3>
             <div className='ageOptions row'>
                 <div className='column'>
-                    <label htmlFor='years'>
+                    <label className='subLabel' htmlFor='years'>
                         years:
                     </label>
                     <div className='numInputBox'>
@@ -37,7 +37,7 @@ const FormFieldAge = () => {
                     </div>
                 </div>
                 <div className='column'>
-                    <label htmlFor='months'>
+                    <label htmlFor='months' className='subLabel'>
                         months:
                     </label>
                     <div className='numInputBox'>
@@ -70,7 +70,6 @@ const FormFieldAge = () => {
 
 const AgeFieldStyles = styled.div`
     .numberInput {
-			border: 1px solid black;
 			width: 1.5rem;
 			padding: 15px;
 			font-size: 20px;
@@ -84,7 +83,6 @@ const AgeFieldStyles = styled.div`
 		}
 
 		.numInputBox {
-			border: 2px solid blue;
 			display: flex;
 			flex-direction: row;
 
@@ -97,20 +95,22 @@ const AgeFieldStyles = styled.div`
 				font-size: 1rem;
 			}
 			.buttonUp {
-				background-color: green;
+				background-color: var(--200);
+                color: black;
 				border-radius: 0 20px 20px 0;
 				:disabled {
-					background-color: grey;
-					color: white;
+					background-color: transparent;
+					color: black;
+                    border: 2px solid var(--500);
 				}
 			}
 			.buttonDown {
-				background-color: red;
+				background-color: var(--500);
 				border-radius: 20px 0 0 20px;
 				:disabled {
 					background-color: transparent;
 					color: black;
-                    border: 1px solid black;
+                    border: 2px solid var(--500);
 				}
 			}
 		}

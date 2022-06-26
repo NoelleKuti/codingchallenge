@@ -4,6 +4,7 @@ import { useAppContext } from '../context/appContext'
 import FormHeaders from './FormHeaders.jsx'
 import FormFieldText from './FormFieldText'
 import FormFieldAge from './FormFieldAge'
+import FormFieldToggles from './FormFieldToggles'
 
 
 const AddCatForm = () => {
@@ -19,20 +20,7 @@ const AddCatForm = () => {
 				<FormHeaders />
 				<FormFieldText />
 			  	<FormFieldAge />
-                <div className='formField column'>
-                    <label htmlFor='xdoor'>Indoor or Outdoor:</label>
-                    <div className='row'>
-                        <button type='button' name='xdoor' value='Indoor' className='indoorBtn'>
-                            Indoor
-                        </button>
-                        <button type='button' name='xdoor' value='Indoor/Outdoor' className='bothBtn'>
-                            Both
-                        </button>
-                        <button type='button' name='xdoor' value='Outdoor' className='outdoorBtn'>
-                            Outdoor
-                        </button>
-                    </div>
-                </div>
+                <FormFieldToggles />
 				<button type='submit' className='submitButton'>SUBMIT</button>
 			</form> 
 
@@ -52,8 +40,6 @@ const FormStyles = styled.div`
 		background-color: white;
 	}
 
-	
-
 	.formField {
 		width: 80%;
 		padding: 1.5rem;
@@ -67,7 +53,11 @@ const FormStyles = styled.div`
 			font-size: 15px;
 			padding: 10px;
 			font-weight: 600;
+            margin-bottom: 2rem;
 		}
+        .subLabel {
+            margin-bottom: 0;
+        }
 	}
 
 	.submitButton {

@@ -10,7 +10,7 @@ const initialState = {
     charsRemaining: 500,
     yearsOld: 0,
     monthsOld: 0,
-    xdoor: '',
+    xdoor: 'Indoor/Outdoor',
     fixed: false,
     available: true,
     showError: false,
