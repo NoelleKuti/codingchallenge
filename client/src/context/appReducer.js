@@ -71,7 +71,7 @@ const reducer = (state, action) => {
                 }
             }
         case VIEW_CATS:
-            const data = action.payload.data;
+            const data = action.payload;
             return {
                 ...state,
                 catsData: data
@@ -91,7 +91,7 @@ const reducer = (state, action) => {
                     xdoor: xdoor,
                     charsRemaining: (500 - description.length)
                 },
-                catToEdit: action.payload
+                catToEdit: {...action.payload}
             }
     }
 }

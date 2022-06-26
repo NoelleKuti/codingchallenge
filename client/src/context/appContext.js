@@ -52,12 +52,13 @@ const AppProvider = ({ children }) => {
     }
 
     const fetchCats = () => {
-        axios.get('http://localhost:5000/api/v1/cats', {mode: 'cors', 'Cache-Control': 'no-cache'})
+        axios.get('http://localhost:5000/api/v1/cats', { crossdomain: true })
             .then((response) => {
                 dispatch({
                     type: VIEW_CATS,
-                    payload: response,
+                    payload: response.data,
                 })
+                console.log(response.data)
             })
     }
 
@@ -72,7 +73,7 @@ const AppProvider = ({ children }) => {
     }
 
     const deleteCat = (objectId) => {
-        axios.delete('http://localhost:5000/api/v1/cats/' + objectId, {mode: 'cors', 'Cache-Control': 'no-cache'})
+        axios.delete('http://localhost:5000/api/v1/cats/' + objectId)
             .then(() => {
                 fetchCats();
             })
@@ -104,7 +105,7 @@ const AppProvider = ({ children }) => {
                 deleteCat,
                 addCat,
                 editCat,
-                chooseCatToEdit
+                chooseCatToEdit,
             }}>
             {children}
         </AppContext.Provider>

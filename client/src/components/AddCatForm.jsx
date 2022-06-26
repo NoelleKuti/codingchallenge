@@ -8,18 +8,12 @@ import FormFieldToggles from './FormFieldToggles'
 
 
 const AddCatForm = () => {
-    const { catName, description, monthsOld, yearsOld, xdoor, fixed, available, addCat } = useAppContext();
+    const { form, addCat } = useAppContext();
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
         const formData = {
-            catName: catName,
-            description: description,
-            monthsOld: monthsOld,
-            yearsOld: yearsOld,
-            xdoor: xdoor,
-            fixed: fixed,
-            available: available,
+            ...form
         }
         addCat(formData);
 	}

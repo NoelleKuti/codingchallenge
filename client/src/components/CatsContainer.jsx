@@ -14,9 +14,9 @@ const CatsContainer = () => {
     
         return (
       <ContainerStyles>
-            {catsData.map((cat) => {
-                return <CatCard key={'k'+cat._id} objectId={cat._id.toString()} catData={cat}/>
-            })}
+           {catsData.map((item) => {
+                return <CatCard key={'k'+item._id} objectId={item._id.toString()} catData={item}/>
+            })} 
       </ContainerStyles>
   )
 }
