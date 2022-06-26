@@ -1,6 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
 import { useAppContext } from '../context/appContext';
+import { MdDeleteOutline, MdOutlineModeEdit } from 'react-icons/md'
+
 
 const CatCard = (data) => {
     const { objectId, catData } = data;
@@ -25,9 +27,15 @@ const CatCard = (data) => {
             <div className='card'>
                 <div className='cardHeader row'>
                     <h2>{catName}</h2>
-                    <button type='button' className='deleteButton' onClick={() =>  window.confirm(`You are about to delete ${catName}. Are you sure?`) && deleteCat(objectId) }>
-                        X
-                    </button>
+                    <div className='buttonContainer row'>
+                        <MdOutlineModeEdit
+                        as='button'
+                        className='button'
+                        onClick={() => { console.log('edit') }}/>
+                           
+                        <MdDeleteOutline
+                        as='button' className='button' onClick={() => window.confirm(`You are about to delete ${catName}. Are you sure?`) && deleteCat(objectId)}/>
+                    </div>
                 </div>
                 <div className='cardText'>
                     <p>{description}</p>
@@ -61,7 +69,20 @@ const CardStyles = styled.div`
     .cardHeader {
         width: 90%;
         margin: 0px auto; 
-        padding: 1rem;  
+        padding: 1rem; 
+        justify-content: space-between;
+        h2 {
+            margin-left: 10px;
+            font-size: 25px;
+        }
+        .buttonContainer {
+            width: 50%;
+            align-items: flex-end;
+            justify-content: flex-end;
+            button {
+                margin: 0 10px 10px 0;
+            }
+        }
     }
     .cardText {
         padding: 1rem;
@@ -75,21 +96,25 @@ const CardStyles = styled.div`
         padding: 1rem;
         justify-self: flex-end;
         border-top: 1px solid var(--500);
-        background-color: var(--200);
+        background-color: var(--100);
         border-radius: 0 0 20px 20px;
     }
-    .deleteButton {
-        height: 4rem;
-        width: 4rem;
+    .button {
+        width: 2rem;
+        height: 2rem;
         padding: 1rem;
-        margin-right: 0;
         border: none;
+        margin: 5px 5px 5px 5px;
         border-radius: 50%;
-        background-color:var(--200);
+        background-color:var(--300);
+        color: white;
+        align-content: center;
+        cursor: pointer;
         :hover {
-            background-color:var(--300);
+            background-color:var(--400);
         }
     }
+
 
 `
 export default CatCard
