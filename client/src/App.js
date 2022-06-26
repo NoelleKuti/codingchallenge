@@ -9,7 +9,7 @@ function App() {
         <AppStyles className='App'>
             {showForm
                 ? <AddCatForm />
-                : <div className='column'>
+                : <div className='column container'>
                     <button className='showFormButton' type='button' onClick={() => {toggleShowForm()}}>
                         add a cat
                     </button>
@@ -34,7 +34,10 @@ const AppStyles = styled.div`
         font-size: 2rem;
         align-self: flex-start;
         margin-top: 3rem;
-    }    
+    }  
+    .container {
+        width: 100%;
+    }  
     
 `
 export default App;

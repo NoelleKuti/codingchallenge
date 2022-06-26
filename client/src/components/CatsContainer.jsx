@@ -15,7 +15,7 @@ const CatsContainer = () => {
         return (
       <ContainerStyles>
             {catsData.map((cat) => {
-                return <CatCard key={'k'+cat._id} id={cat._id} catData={cat}/>
+                return <CatCard key={'k'+cat._id} objectId={cat._id.toString()} catData={cat}/>
             })}
       </ContainerStyles>
   )
@@ -27,7 +27,5 @@ const ContainerStyles = styled.div`
     width: 100%;
     justify-content: space-evenly;
     padding: 1rem;
-
-
 `
 export default CatsContainer

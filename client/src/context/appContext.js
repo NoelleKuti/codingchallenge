@@ -51,6 +51,12 @@ const AppProvider = ({ children }) => {
                 })
             })
     }
+    const deleteCat = (objectId) => {
+        axios.delete('http://localhost:5000/api/v1/cats/' + objectId, {mode: 'cors', 'Cache-Control': 'no-cache'})
+            .then(() => {
+                fetchCats();
+            })
+    }
     return (
         <AppContext.Provider
             value={{
@@ -59,7 +65,8 @@ const AppProvider = ({ children }) => {
                 clearForm,
                 handleTextInput,
                 handleAgeChange,
-                fetchCats
+                fetchCats,
+                deleteCat,
             }}>
             {children}
         </AppContext.Provider>

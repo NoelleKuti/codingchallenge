@@ -10,8 +10,9 @@ const editCat = (req, res) => {
     res.send('Edit a cat!');
 }
 
-const deleteCat = (req, res) => {
-    res.send('Delete a cat!');
+const deleteCat = async (req, res) => {
+    const deletedCat = await Cat.findByIdAndRemove({_id: req.params.id});
+    res.send(deletedCat);
 }
 
 const viewCats = async (req, res) => {
