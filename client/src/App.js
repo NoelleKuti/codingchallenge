@@ -37,6 +37,8 @@ const AppStyles = styled.div`
     }  
     .container {
         width: 100%;
+        margin: 0px auto;
+        border: 2px solid white;
     }  
     
 `

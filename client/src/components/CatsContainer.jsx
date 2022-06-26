@@ -24,7 +24,6 @@ const CatsContainer = () => {
 const ContainerStyles = styled.div`
     display: flex;
     flex-wrap: wrap;
-    width: 100%;
     justify-content: space-evenly;
     padding: 1rem;
 `
