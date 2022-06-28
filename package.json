@@ -4,12 +4,14 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "server": "nodemon server --ignore client",
+    "dev":"nodemon server",
+    "server": "node server.js --ignore client",
     "client": "npm start --prefix client",
     "start": "concurrently --kill-others-on-fail \"npm run server\" \" npm run client\""
   },
   "engines": {
-    "node": "16.13.2"
+    "node":"16.13.2",
+    "npm":"8.1.2"
   },
   "keywords": [],
   "author": "",
