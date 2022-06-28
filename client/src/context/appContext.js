@@ -58,7 +58,6 @@ const AppProvider = ({ children }) => {
                     type: VIEW_CATS,
                     payload: response.data,
                 })
-                console.log(response.data)
             })
     }
 
@@ -89,7 +88,7 @@ const AppProvider = ({ children }) => {
         axios.patch('http://localhost:5000/api/v1/cats/' + objectId, data)
             .then((response) => {
                 dispatch({type: TOGGLE_EDIT_FORM})
-                console.log(response.data);
+                console.log('this one!', response.data);
                 fetchCats();
             })
     }

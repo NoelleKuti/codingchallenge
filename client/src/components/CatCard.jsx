@@ -50,7 +50,7 @@ const CatCard = (data) => {
                     <p>{catName} <span>{available ? 'is' : 'is not'}</span> currently available for adoption.</p>
                 </div>
                 <div className='column timeStamps'>
-                    <p>Added: {timeStamps.updated}</p>
+                    <p>Added: {timeStamps.created}</p>
                     <p>Last Updated: {timeStamps.updated}</p>
                 </div>
             </div>

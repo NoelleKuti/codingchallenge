@@ -42,4 +42,6 @@ let catSchema = new Schema(
     //catSchema.set('collection', 'code-challenge')
 let Cat = mongoose.model("Cat", catSchema);
 
+Cat.schema.pre("findOneAndUpdate", function (next) { this.updateAt = new Date(); next(); })
+
 export default Cat

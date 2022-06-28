@@ -78,7 +78,7 @@ const reducer = (state, action) => {
             }
         case CHOOSE_CAT_TO_EDIT:
             const {catName, description, yearsOld, monthsOld, fixed, available, xdoor} = action.payload
-            
+            console.log(action.payload);
             return {
                 ...state,
                 form: {
