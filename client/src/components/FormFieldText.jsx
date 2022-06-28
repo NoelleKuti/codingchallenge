@@ -3,8 +3,8 @@ import styled from 'styled-components'
 import { useAppContext } from '../context/appContext'
 
 const FormFieldText = () => {
-    const { handleTextInput, charsRemaining, form } = useAppContext();
-    const { catName, description } = form;
+    const { handleTextInput, form } = useAppContext();
+    const { catName, description, charsRemaining } = form;
     
     return (
       <TextFieldStyles>

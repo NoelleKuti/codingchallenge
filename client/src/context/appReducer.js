@@ -5,8 +5,8 @@ const reducer = (state, action) => {
     switch (action.type) {
         case TOGGLE_ADD_FORM:
             return {
-                ...state,
-                showAddForm: (!state.showAddForm)
+                ...initialState,
+                showAddForm: (!state.showAddForm),
             }
         case TOGGLE_EDIT_FORM:
             if (state.showEditForm === true) {
@@ -89,7 +89,7 @@ const reducer = (state, action) => {
                     fixed: fixed,
                     available: available,
                     xdoor: xdoor,
-                    charsRemaining: (500 - description.length)
+                    charsRemaining: 500-description.length
                 },
                 catToEdit: {...action.payload}
             }

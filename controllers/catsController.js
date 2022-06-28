@@ -7,7 +7,7 @@ const addCat = async (req, res) => {
 }
 
 const editCat = async (req, res) => {
-    const editedCat = await Cat.findByIdAndUpdate(req.params.id, req.body)
+    const editedCat = await Cat.findByIdAndUpdate(req.params.id, req.body, {new:true})
     res.send(editedCat);
 }
 
