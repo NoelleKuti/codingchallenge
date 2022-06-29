@@ -18,7 +18,7 @@ app.use(cors());
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.get('/test', (req, res) => {
+app.get('/', (req, res) => {
     res.send('Connected To Express!');
 })
 
